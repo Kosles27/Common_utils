@@ -1,0 +1,12 @@
+b7c1e2c9ac1992a7b9a5c20fd57978d90cc4e365:src/main/resources/zim.global.properties:generic-api-key:50
+b7c1e2c9ac1992a7b9a5c20fd57978d90cc4e365:src/main/resources/zim.global.properties:generic-api-key-custom:50
+b7c1e2c9ac1992a7b9a5c20fd57978d90cc4e365:src/main/resources/zim.global.properties:generic-api-key-custom:51
+b7c1e2c9ac1992a7b9a5c20fd57978d90cc4e365:src/main/resources/zim.global.properties:generic-api-key-custom:54
+fa719a79eb1131cec5c404ce1fc86e142a1e3951:src/main/java/emailUtils/mailSlurp/MailSlurpHandler.java:generic-api-key:22
+fa719a79eb1131cec5c404ce1fc86e142a1e3951:src/main/java/emailUtils/mailSlurp/MailSlurpHandler.java:generic-api-key-custom:22
+4ff5443a7d4992088b8a6cac560a1b1ad5b87269:src/main/java/secretsManager/SecretUtils.java:generic-api-key-custom:91
+4ba417a94aab29e371b602ca65dd073c84a52bda:src/main/java/secretsManager/Secret.java:generic-api-key-custom:15
+c3b3e7991cf65c948b271b148c062fc0175faba7:src/main/resources/zim.global.properties:generic-api-key:55
+c3b3e7991cf65c948b271b148c062fc0175faba7:src/main/resources/zim.global.properties:generic-api-key-custom:55
+c3b3e7991cf65c948b271b148c062fc0175faba7:src/main/resources/zim.global.properties:generic-api-key-custom:58
+4547e119b789df7a28b4ad867c748a38de853cdf:src/main/java/secretsManager/SecretUtils.java:generic-api-key:22

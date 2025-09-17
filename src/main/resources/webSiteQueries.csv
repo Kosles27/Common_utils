@@ -1,0 +1,23 @@
+QueryName,QueryText
+hello,"SELECT AGB_CODE AS AGENT_CODE, AG.AGB_NAME1 AS AGENT_NAME,
+                AG.AGB_ADD1 || ' ' || AG.AGB_ADD2 || ' ' || AG.AGB_ADD3 || ' ' || AG.AGB_ADD4 || ' ' || AG.AGB_ADD5 || ' ' || AG.AGB_ADD6 AS AGENT_ADDRESS,
+                PT.PRT_NAME AS CITY, CO.COU_NAME AS COUNTRY, CA.CA_AREA AS AREA
+                FROM APLCNT.TAB_AGB AG
+                LEFT OUTER JOIN TAB_PRT PT ON SUBSTR(AG.AGB_CODE,1,5)=PT.PRT_CODE
+                LEFT OUTER JOIN TAB_COUNTRY CO ON SUBSTR(AG.AGB_CODE,1,2)=CO.COU_ISO2
+                LEFT OUTER JOIN TAB_COU_AREA CA ON CO.COU_ISO3=CA.CA_COU"
+bye,query2
+getPortOfLoadingQuery,"select distinct concat(POl.PORT_NAME ,concat(' - ',cadata.pol)) from PCS.PCS_CANDIDATES_ALL_DATA_V cadata,
+                 PCS.PCS_DSA_CONTACTS contact,
+                PCS.PCS_DSA_AUTHORIZATION aut,
+               TW.PORT_TABLE pol 
+                 where lower(CONTACT.CONTACT_EMAIL) = '%s'
+                and CADATA.SERVICE_CATALOG_NAME= 'DRAFT_BL' 
+                and CADATA.SOURCE_STATE <> 'INITIAL' 
+                and CADATA.DSA_ID = contact.dsa_id
+                and CONTACT.ACTIVE='Y' and AUT.DSA_SERVICE_ID = CADATA.DSA_SERVICE_ID
+                and cadata.CUCC_ORIGIN_TYPE in ('CP','SH','FW', 'SI')
+                 and AUT.DSA_CONTACT_ID = CONTACT.DSA_CONTACT_ID
+                and cadata.bill_type in ('REGULAR','WAYBILL')
+                and cadata.scac<>'LNLU'
+                and POl.PORT_CODE = rpad(cadata.pol,5)"

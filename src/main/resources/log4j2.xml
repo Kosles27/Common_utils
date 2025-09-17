@@ -1,0 +1,43 @@
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} [%t] %-5level(thread-id:%tid) %c{4}.%M (line:%L) - %msg%n}" />
+            <ThresholdFilter level="${sys:ConsoleLogLevel:-info}" />
+        </Console>
+        <RollingFile name="RollingFileAppender" fileName="SeleniumLogs/app.log"
+                     filePattern="SeleniumLogs/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level(thread-id:%tid) %c{4}.%M (line:%L) - %msg%n
+                </Pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="200 MB" />
+            </Policies>
+            <ThresholdFilter level="info" />
+            <DefaultRolloverStrategy max="20" />
+        </RollingFile>
+        <RollingFile name="RollingFileTraceAppender" fileName="SeleniumLogs/app-trace.log"
+                     filePattern="SeleniumLogs/app-trace-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level(thread-id:%tid) %c{4}.%M (line:%L) - %msg%n
+                </Pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="200 MB" />
+            </Policies>
+            <ThresholdFilter level="trace" />
+            <DefaultRolloverStrategy max="10" />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="${com.zim.qaaut.logLevel:-debug}">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="RollingFileAppender" />
+            <AppenderRef ref="RollingFileTraceAppender" />
+        </Root>
+    </Loggers>
+</Configuration>
