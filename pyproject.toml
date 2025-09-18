@@ -1,0 +1,100 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "common-utils"
+version = "0.1.0"
+description = "Python scaffolding for the Common Utils automation toolkit."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "QA Automation" }
+]
+keywords = ["automation", "testing", "utilities"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: OS Independent"
+]
+dependencies = []
+
+[project.optional-dependencies]
+# Selenium/Appium automation surface mapped from the Java toolchain
+automation = [
+    "selenium>=4.18.1,<5.0",
+    "appium-python-client>=4.0.0",
+    "mss>=9.0.1",
+    "pillow>=10.2.0",
+    "PyHamcrest>=2.1.0"
+]
+
+# HTTP clients, authentication, and mail integrations
+networking = [
+    "requests>=2.31.0",
+    "httpx>=0.27.0",
+    "PyJWT>=2.8.0",
+    "mailslurp-client>=15.19.22",
+    "msal>=1.28.0",
+    "adal>=1.2.7"
+]
+
+# Database connectivity and connection pooling equivalents
+# HikariCP, Spring JDBC, SQLite, and MSSQL driver coverage
+# Note: installing pyodbc may require system ODBC headers (unixODBC) on Linux/macOS.
+datastores = [
+    "sqlalchemy>=2.0.29",
+    "pyodbc>=5.1.0"
+]
+
+# File format tooling: Excel/CSV, PDF, JSON, and charting/reporting helpers
+file_formats = [
+    "pandas>=2.2.1",
+    "openpyxl>=3.1.2",
+    "pypdf>=4.1.0",
+    "orjson>=3.10.0",
+    "matplotlib>=3.8.3"
+]
+
+# Reporting harness analogous to ExtentReports / HP LFT stack
+reporting = [
+    "allure-pytest>=2.13.2"
+]
+
+# Development-time quality gates and test stack
+dev = [
+    "pytest>=8.1.1",
+    "pytest-cov>=5.0.0",
+    "ruff>=0.3.5",
+    "mypy>=1.9.0"
+]
+
+[project.urls]
+"Source" = "https://github.com/example/common_utils"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["common_utils*"]
+
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "--strict-markers --disable-warnings --maxfail=1"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+src = ["common_utils", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+
